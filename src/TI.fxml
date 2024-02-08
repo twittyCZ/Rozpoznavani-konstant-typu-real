@@ -1,0 +1,535 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.CubicCurve?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.demo.Application">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Button fx:id="plus" layoutX="824.0" layoutY="502.0" mnemonicParsing="false" onAction="#addPlus" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="+" />
+            <Button fx:id="minus" layoutX="883.0" layoutY="502.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#addMinus" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="-" />
+            <TextArea fx:id="inputTA" cacheShape="false" centerShape="false" editable="false" focusTraversable="false" layoutX="1019.0" layoutY="26.0" nodeOrientation="LEFT_TO_RIGHT" prefHeight="558.0" prefWidth="245.0" scaleShape="false" scrollLeft="5.0" scrollTop="5.0" text="A" wrapText="true">
+               <font>
+                  <Font size="25.0" />
+               </font></TextArea>
+            <Button fx:id="zpet" layoutX="1113.0" layoutY="595.0" mnemonicParsing="false" onAction="#backspace" prefHeight="25.0" prefWidth="70.0" text="Zpět" />
+            <Button fx:id="restart" layoutX="1194.0" layoutY="595.0" mnemonicParsing="false" onAction="#restart" prefHeight="25.0" prefWidth="70.0" text="Restart" />
+            <Button fx:id="tri" layoutX="946.0" layoutY="533.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="3" />
+            <Button fx:id="nula" layoutX="946.0" layoutY="502.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="0" />
+            <Button fx:id="dva" layoutX="883.0" layoutY="533.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="2" />
+            <Button fx:id="ctyri" layoutX="824.0" layoutY="565.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="4" />
+            <Button fx:id="sest" layoutX="946.0" layoutY="565.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="6" />
+            <Button fx:id="pet" layoutX="883.0" layoutY="565.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="5" />
+            <Button fx:id="sedm" layoutX="824.0" layoutY="598.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="7" />
+            <Button fx:id="osm" layoutX="883.0" layoutY="598.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="8" />
+            <Button fx:id="devet" layoutX="946.0" layoutY="598.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="9" />
+            <Button fx:id="jedna" layoutX="824.0" layoutY="533.0" mnemonicParsing="false" onAction="#addNumber" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="1" />
+            <TextArea fx:id="outputTA" editable="false" layoutX="14.0" layoutY="475.0" prefHeight="137.0" prefWidth="797.0" wrapText="true">
+               <font>
+                  <Font size="48.0" />
+               </font></TextArea>
+            <Circle fx:id="signCircle" layoutX="220.0" layoutY="243.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill></Circle>
+            <Circle fx:id="startCircle" fill="#e1ff0000" layoutX="105.0" layoutY="247.0" radius="33.0" stroke="YELLOW" strokeType="INSIDE" strokeWidth="5.0" />
+            <Line endX="-66.75" layoutX="136.0" layoutY="248.0" startX="-100.0" stroke="BLUE" strokeWidth="5.0" fx:id="xToStartByNothingLine" />
+            <Line fx:id="T1" endX="-5.0" endY="42.0" layoutX="75.0" layoutY="206.0" startX="-21.0" startY="30.0" stroke="#0040ff" strokeWidth="5.0" />
+            <Line fx:id="T2" endX="-8.29290771484375" endY="22.70709228515625" layoutX="79.0" layoutY="226.0" startX="-24.0" startY="35.0" stroke="#0015ff" strokeWidth="5.0" />
+            <Text fx:id="strartLabel" layoutX="63.0" layoutY="256.0" strokeType="OUTSIDE" strokeWidth="0.0" text="A" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Button fx:id="carka" layoutX="824.0" layoutY="471.0" mnemonicParsing="false" onAction="#addComma" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="." />
+            <Label layoutX="1019.0" layoutY="6.0" prefHeight="17.0" prefWidth="59.0" text="Vstupy:" />
+            <Label layoutX="17.0" layoutY="451.0" prefHeight="17.0" prefWidth="288.0" text="Výsledek:" />
+            <Circle fx:id="intCircle" layoutX="334.0" layoutY="243.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="decCircle" layoutX="450.0" layoutY="245.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="floatCircle" layoutX="565.0" layoutY="247.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="eCircle" layoutX="677.0" layoutY="247.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="signECircle" layoutX="790.0" layoutY="246.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="endCircle" layoutX="910.0" layoutY="364.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Circle fx:id="dontKnowCircle" layoutX="371.0" layoutY="359.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Line fx:id="signToIntByNumberLine" endX="-52.0" endY="1.0" layoutX="354.0" layoutY="246.0" startX="-100.0" startY="1.0" strokeWidth="5.0" />
+            <Line fx:id="intToDecByCommaLine" endX="-50.0" endY="1.0" layoutX="467.0" layoutY="246.0" startX="-100.0" strokeWidth="5.0" />
+            <Line fx:id="decToFloatByNumber" endX="-46.0" endY="1.0" layoutX="579.0" layoutY="246.0" startX="-97.0" startY="1.0" strokeWidth="5.0" />
+            <Line fx:id="floatToEByE" endX="-52.0" endY="1.0" layoutX="697.0" layoutY="246.0" startX="-100.0" strokeWidth="5.0" />
+            <Label alignment="CENTER" graphicTextGap="5.0" layoutX="-180.0" layoutY="18.0" prefHeight="88.0" prefWidth="858.0" text="DKA REAL KONSTANT " textFill="#0d00ff">
+               <font>
+                  <Font size="38.0" />
+               </font>
+            </Label>
+            <Text layoutX="181.0" layoutY="252.0" strokeType="OUTSIDE" strokeWidth="0.0" text="B" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="294.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="C" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="413.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="D" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="523.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="E" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="638.0" layoutY="257.0" strokeType="OUTSIDE" strokeWidth="0.0" text="F" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="750.0" layoutY="255.0" strokeType="OUTSIDE" strokeWidth="0.0" text="G" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Circle fx:id="expCircle" layoutX="906.0" layoutY="246.0" radius="33.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="5.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Circle>
+            <Text layoutX="868.0" layoutY="253.0" strokeType="OUTSIDE" strokeWidth="0.0" text="H" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="874.0" layoutY="373.0" strokeType="OUTSIDE" strokeWidth="0.0" text="I" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text layoutX="330.0" layoutY="368.0" strokeType="OUTSIDE" strokeWidth="0.0" text="J" textAlignment="CENTER" wrappingWidth="76.89242553710938">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <CubicCurve fx:id="startToSignByPlusLine" controlX1="-43.0" controlX2="-20.0" controlY1="-87.0" controlY2="-87.0" endX="-8.0" endY="-79.265625" fill="#ffffff00" layoutX="195.0" layoutY="312.0" startX="-57.0" startY="-79.265625" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="startToSignByMinusLine" controlX1="-48.0" controlX2="-21.0" controlY1="-115.0" controlY2="-115.0" endX="-9.0" endY="-122.984375" fill="#ffffff00" layoutX="196.0" layoutY="377.0" startX="-58.0" startY="-122.984375" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="startToIntByNumberLine" controlX1="1.0" controlX2="80.0" controlY1="-73.0" controlY2="-73.0" endX="133.0" endY="-19.0" fill="#ffffff00" layoutX="179.0" layoutY="240.0" startX="-74.0" startY="-26.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="startToDontKnowByComma" controlX1="-64.0" controlX2="1.0" controlY1="41.0234375" controlY2="41.0234375" endX="71.0" endY="41.0234375" fill="#ffffff00" layoutX="270.0" layoutY="333.0" startX="-159.0" startY="-53.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="eToExptByNumber" controlX1="108.0" controlX2="228.0" controlY1="-213.0" controlY2="-204.0" endX="256.0" endY="-150.0700225830078" fill="#ffffff00" layoutX="630.0" layoutY="373.0" startX="62.75" startY="-155.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="expToExpByNumber" controlX1="111.0" controlX2="218.0" controlY1="-50.0" controlY2="-50.0" endX="182.0" endY="15.0" fill="#ffffff00" layoutX="741.0" layoutY="204.0" startX="150.0" startY="15.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="IntToIntByNumberLine" controlX1="-82.0" controlX2="22.0" controlY1="-125.0" controlY2="-125.0" endX="-20.0" endY="-53.0" fill="#ffffff00" layoutX="365.0" layoutY="263.0" startX="-43.0" startY="-53.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="signToDontKnowByComma" controlX1="-126.0" controlX2="-88.0" controlY1="-1.0" controlY2="25.0" endX="-46.0" endY="25.0" fill="#ffffff00" layoutX="386.0" layoutY="326.0" startX="-163.0" startY="-50.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="intToEByELine" controlX1="-66.0" controlX2="218.0" controlY1="-109.0" controlY2="-130.0" endX="203.25" endY="13.75" fill="#ffffff00" layoutX="480.0" layoutY="202.0" startX="-123.0" startY="16.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="decToEByELine" controlX1="7.0" controlX2="147.0" controlY1="-86.0" controlY2="-76.0" endX="170.0" endY="7.15081787109375" fill="#ffffff00" layoutX="490.0" layoutY="210.0" startX="-40.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="floatToFloatByNumber" controlX1="-82.0" controlX2="22.0" controlY1="-125.0" controlY2="-125.0" endX="-20.0" endY="-53.0" fill="#ffffff00" layoutX="600.0" layoutY="268.0" startX="-43.0" startY="-53.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="eToSignEByPlus" controlX1="-43.0" controlX2="-20.0" controlY1="-87.0" controlY2="-87.0" endX="-6.5" endY="-79.265625" fill="#ffffff00" layoutX="764.0" layoutY="317.0" startX="-57.0" startY="-79.265625" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="eToSignEByMinus" controlX1="-48.0" controlX2="-21.0" controlY1="-115.0" controlY2="-115.0" endX="1.5" endY="-124.75" fill="#ffffff00" layoutX="760.0" layoutY="387.0" startX="-58.0" startY="-122.984375" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <Line fx:id="signEToExptByNumber" endX="-10.0" endY="11.0" layoutX="884.0" layoutY="235.0" startX="-61.0" startY="11.0" strokeWidth="5.0" />
+            <Line fx:id="E25" endX="-35.0" endY="-14.0" layoutX="947.0" layoutY="294.0" startX="-35.0" startY="38.0" strokeWidth="5.0" />
+            <CubicCurve fx:id="dontKnowToFloatByNumber" controlX1="-24.0" controlX2="-67.0" controlY1="16.0" controlY2="65.0" endX="-141.0" endY="56.0" fill="#ffffff00" layoutX="545.0" layoutY="309.0" startX="11.0" startY="-29.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="E19" controlX1="-119.0" controlX2="232.25" controlY1="35.0" controlY2="65.25" endX="301.25" endY="46.5" fill="#ffffff00" layoutX="581.0" layoutY="337.0" startX="-131.0" startY="-59.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <CubicCurve fx:id="E24" controlX1="-10.0" controlX2="20.0" controlY1="-11.0" controlY2="32.0" endX="285.5" endY="22.75" fill="#ffffff00" layoutX="591.0" layoutY="347.0" startX="-26.0" startY="-67.0" stroke="BLACK" strokeWidth="5.0">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+            </CubicCurve>
+            <Line fx:id="T3" endX="-77.5" endY="16.5" layoutX="245.0" layoutY="211.0" startX="-84.25" startY="9.25" strokeWidth="5.0" />
+            <Line fx:id="T5" endX="-86.29290771484375" endY="36.29681396484375" layoutX="257.0" layoutY="224.0" startX="-94.50473022460938" startY="28.81292724609375" strokeWidth="5.0" />
+            <Line fx:id="T6" endX="-51.0" endY="10.00390625" layoutX="221.0" layoutY="251.0" startX="-57.5" startY="17.75" strokeWidth="5.0" />
+            <Line fx:id="T4" endX="-95.25" endY="-11.25" layoutX="263.0" layoutY="239.0" startX="-101.75" startY="-4.25" strokeWidth="5.0" />
+            <Label layoutX="141.0" layoutY="198.0" text="+">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="722.0" layoutY="198.0" text="+">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="140.0" layoutY="254.0" text="-">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="711.0" layoutY="261.0" text="-">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="278.0" layoutY="250.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="189.0" layoutY="146.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="324.0" layoutY="176.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="424.0" layoutY="327.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="514.0" layoutY="246.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="557.0" layoutY="180.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="782.0" layoutY="141.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="895.0" layoutY="181.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="840.0" layoutY="210.0" text="D">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Button fx:id="e" layoutX="883.0" layoutY="471.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#addE" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="e" />
+            <Label layoutX="399.0" layoutY="236.0" prefHeight="35.0" prefWidth="17.0" text=".">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="186.0" layoutY="296.0" text=".">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="254.0" layoutY="268.0" text=".">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Label layoutX="413.0" layoutY="163.0" text="e">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="468.0" layoutY="189.0" text="e">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Label layoutX="614.0" layoutY="241.0" text="e">
+               <font>
+                  <Font size="24.0" />
+               </font></Label>
+            <Line fx:id="T13" endX="-73.0" endY="30.0" layoutX="302.0" layoutY="139.0" startX="-65.53553771972656" startY="41.0" strokeWidth="5.0" />
+            <Line fx:id="T14" endX="-37.0" endY="-66.0" layoutX="273.0" layoutY="249.0" startX="-47.0" startY="-59.0" strokeWidth="5.0" />
+            <Label layoutX="432.0" layoutY="271.0" text="_">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Line fx:id="T37" endX="-90.5" endY="13.75" layoutX="373.0" layoutY="304.0" startX="-83.0" startY="34.75" strokeWidth="5.0" />
+            <Line fx:id="T38" endX="-37.75" endY="4.0" layoutX="328.0" layoutY="335.0" startX="-58.75" startY="4.0" strokeWidth="5.0" />
+            <Line fx:id="T35" endX="-39.5" endY="0.5" layoutX="307.0" layoutY="371.0" startX="-59.75" startY="9.75" strokeWidth="5.0" />
+            <Line fx:id="T36" endX="-92.0" endY="24.0" layoutX="345.0" layoutY="327.0" startX="-75.5" startY="42.75" strokeWidth="5.0" />
+            <Line fx:id="T8" endX="-37.0" endY="-66.0" layoutX="318.0" layoutY="314.0" startX="-52.0" startY="-55.0" strokeWidth="5.0" />
+            <Line fx:id="T7" endX="-78.0" endY="31.0" layoutX="346.0" layoutY="205.0" startX="-65.53553771972656" startY="41.0" strokeWidth="5.0" />
+            <Line fx:id="T10" endX="-74.75" endY="32.75" layoutX="403.0" layoutY="117.0" startX="-69.0" startY="39.0" strokeWidth="5.0" />
+            <Line fx:id="T9" endX="-40.25" endY="-66.25" layoutX="373.0" layoutY="224.0" startX="-43.25" startY="-60.25" strokeWidth="5.0" />
+            <Line fx:id="T15" endX="-78.0" endY="31.0" layoutX="460.0" layoutY="203.0" startX="-64.5" startY="44.0" strokeWidth="5.0" />
+            <Line fx:id="T16" endX="-37.0" endY="-66.0" layoutX="433.0" layoutY="314.0" startX="-52.0" startY="-55.0" strokeWidth="5.0" />
+            <Label layoutX="608.0" layoutY="305.0" text="_">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Line fx:id="T20" endX="-78.0" endY="31.0" layoutX="578.0" layoutY="201.0" startX="-66.0" startY="45.0" strokeWidth="5.0" />
+            <Line fx:id="T19" endX="-35.75" endY="-69.0" layoutX="548.0" layoutY="316.0" startX="-49.25" startY="-57.5" strokeWidth="5.0" />
+            <Line fx:id="T11" endX="-68.0" endY="48.5" layoutX="534.0" layoutY="72.0" startX="-51.0" startY="54.0" strokeWidth="5.0" />
+            <Line fx:id="T12" endX="-41.5" endY="-76.75" layoutX="525.0" layoutY="204.0" startX="-52.5" startY="-62.75" strokeWidth="5.0" />
+            <Line fx:id="T18" endX="-86.25" endY="45.0" layoutX="576.0" layoutY="112.0" startX="-66.0" startY="45.0" strokeWidth="5.0" />
+            <Line fx:id="T17" endX="-39.75" endY="-80.25" layoutX="551.0" layoutY="238.0" startX="-49.5" startY="-64.75" strokeWidth="5.0" />
+            <Line fx:id="T21" endX="-39.0" endY="-83.75" layoutX="613.0" layoutY="247.0" startX="-48.0" startY="-75.75" strokeWidth="5.0" />
+            <Line fx:id="T22" endX="-57.25" endY="40.5" layoutX="626.0" layoutY="114.0" startX="-51.75" startY="47.75" strokeWidth="5.0" />
+            <Line fx:id="T23" endX="-35.75" endY="-69.0" layoutX="655.0" layoutY="318.0" startX="-49.25" startY="-57.5" strokeWidth="5.0" />
+            <Line fx:id="T24" endX="-78.0" endY="31.0" layoutX="685.0" layoutY="200.0" startX="-66.0" startY="45.0" strokeWidth="5.0" />
+            <Line fx:id="T25" endX="-37.5" endY="-73.25" layoutX="769.0" layoutY="307.0" startX="-46.25" startY="-67.5" strokeWidth="5.0" />
+            <Line fx:id="T26" endX="-69.5" endY="40.75" layoutX="793.0" layoutY="185.0" startX="-61.5" startY="47.5" strokeWidth="5.0" />
+            <Line fx:id="T28" endX="-37.5" endY="-73.25" layoutX="769.0" layoutY="345.0" startX="-46.25" startY="-67.5" strokeWidth="5.0" />
+            <Line fx:id="T27" endX="-67.5" endY="44.75" layoutX="793.0" layoutY="219.0" startX="-60.75" startY="51.5" strokeWidth="5.0" />
+            <Line fx:id="T30" endX="-39.0" endY="-75.5" layoutX="884.0" layoutY="322.0" startX="-49.25" startY="-67.5" strokeWidth="5.0" />
+            <Line fx:id="T29" endX="-69.5" endY="44.5" layoutX="905.0" layoutY="194.0" startX="-60.5" startY="51.0" strokeWidth="5.0" />
+            <Line fx:id="T31" endX="-68.75" endY="50.0" layoutX="840.0" layoutY="122.0" startX="-61.25" startY="55.25" strokeWidth="5.0" />
+            <Line fx:id="T32" endX="-42.25" endY="-74.21446228027344" layoutX="821.0" layoutY="255.0" startX="-49.25" startY="-67.5" strokeWidth="5.0" />
+            <Line fx:id="T33" endX="-66.5" endY="48.5" layoutX="959.0" layoutY="117.0" startX="-59.25" startY="52.75" strokeWidth="5.0" />
+            <Line fx:id="T34" endX="-68.5" endY="48.5" layoutX="967.0" layoutY="130.0" startX="-66.5" startY="41.75" strokeWidth="5.0" />
+            <Line fx:id="E26" endX="-39.0" endY="-56.0" layoutX="951.0" layoutY="362.0" startX="-46.25" startY="-68.25" strokeWidth="5.0" />
+            <Line fx:id="E27" endX="-49.0" endY="-66.0" layoutX="961.0" layoutY="372.0" startX="-41.75" startY="-78.5" strokeWidth="5.0" />
+            <Line fx:id="D1" endX="-61.75" endY="22.75" layoutX="1002.0" layoutY="358.0" startX="-35.0" startY="38.0" strokeWidth="5.0" />
+            <Line fx:id="D2" endX="-49.0" endY="-65.25" layoutX="1016.0" layoutY="460.0" startX="-60.25" startY="-84.5" strokeWidth="5.0" />
+            <Line fx:id="D3" endX="-59.25" endY="-73.75" layoutX="1026.0" layoutY="470.0" startX="-81.0" startY="-73.75" strokeWidth="5.0" />
+            <Line fx:id="T39" endX="-77.5" endY="43.75" layoutX="540.0" layoutY="304.0" startX="-57.75" startY="46.75" strokeWidth="5.0" />
+            <Line fx:id="T40" endX="-75.0" endY="49.078338623046875" layoutX="549.0" layoutY="320.0" startX="-66.25" startY="31.75" strokeWidth="5.0" />
+            <Label layoutX="922.0" layoutY="295.0" text="_">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+            <Line fx:id="E20" endX="-61.5" endY="-2.25" layoutX="529.0" layoutY="297.0" startX="-58.5" startY="13.75" strokeWidth="5.0" />
+            <Line fx:id="E21" endX="-89.5" endY="28.75" layoutX="544.0" layoutY="278.0" startX="-73.5" startY="33.25" strokeWidth="5.0" />
+            <Line fx:id="E22" endX="-61.5" endY="-2.25" layoutX="657.0" layoutY="319.0" startX="-58.5" startY="13.75" strokeWidth="5.0" />
+            <Line fx:id="E23" endX="-60.75" endY="-3.128662109375" layoutX="659.0" layoutY="338.0" startX="-76.5" startY="-6.75" strokeWidth="5.0" />
+            <Button fx:id="mezera" layoutX="946.0" layoutY="471.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#addEnd" onKeyPressed="#keyPressed" prefHeight="25.0" prefWidth="51.0" text="_" />
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+    </AnchorPane>
+  </children>
+</VBox>
